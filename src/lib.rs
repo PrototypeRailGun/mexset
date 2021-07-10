@@ -2,7 +2,7 @@ use std::hash::Hash;
 use rustc_hash::FxHashSet;
 use std::collections::BTreeSet;
 use std::collections::hash_set::{ Iter, IntoIter };
-use std::iter::{ FromIterator, Extend };
+use std::iter::FromIterator;
 use num::traits::Unsigned;
 use num::Num;
 

@@ -1,7 +1,8 @@
 [package]
 name = "mexset"
 version = "0.1.0"
-authors = ["PrototypeRailGun <52821033+PrototypeRailGun@users.noreply.github.com>"]
+authors = ["PrototypeRailGun"]
+license = "MIT"
 edition = "2018"
 readme = "README.md"
 description="Implementing a set with MEX support"

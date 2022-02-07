@@ -1,5 +1,3 @@
-# graphalgs
-
 * [Documentation](https://docs.rs/mexset/)
 * [Crate](https://crates.io/crates/mexset)
 

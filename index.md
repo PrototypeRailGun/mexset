@@ -1,37 +1,40 @@
-## Welcome to GitHub Pages
+* [Documentation](https://docs.rs/mexset/)
+* [Crate](https://crates.io/crates/mexset)
 
-You can use the [editor on GitHub](https://github.com/PrototypeRailGun/mexset/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Description
 
-### Markdown
+The MexSet data structure is an implementation of a set that can quickly find **MEX**.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+*The MEX (Minimum EXcluded) of a subset of the set of natural numbers is the minimum natural number missing from this subset.
+That is, it is the minimum value of the [complement](https://en.wikipedia.org/wiki/Complement_(set_theory)) set.*
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+## Usage
 
-- Bulleted
-- List
+As a library
 
-1. Numbered
-2. List
+```rust
+use mexset::MexSet;
 
-**Bold** and _Italic_ and `Code` text
+let mut set: MexSet<u32> = MexSet::new();
+assert_eq!(set.minimum_excluded(), 0);   // The MEX of an empty set is 0
 
-[Link](url) and ![Image](src)
+set.insert(2); 
+set.insert(1);
+assert_eq!(set.minimum_excluded(), 0);   // 0 is the smallest missing number
+
+set.insert(0);
+assert_eq!(set.minimum_excluded(), 3);   // mex({0, 1, 2}) = 3
+
+set.insert(4);
+assert_eq!(set.minimum_excluded(), 3);   // mex({0, 1, 2, 4}) = 3
+
+set.insert(3);
+assert_eq!(set.minimum_excluded(), 5);   // mex({0, 1, 2, 3, 4}) = 5
+
+set.remove(&1);
+assert_eq!(set.minimum_excluded(), 1);  // mex({0, 2, 3, 4}) = 1
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/PrototypeRailGun/mexset/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+If you have any comments or suggestions, or you suddenly found an error, please start a new issue or pool request.
